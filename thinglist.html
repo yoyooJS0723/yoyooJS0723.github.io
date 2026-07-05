@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <style>
+        .thing {
+            margin: auto;
+            width: 70vw;
+            border-radius: 20px;
+            background-color: #e2e2e2;
+        }
+        .hidden {
+            display: none;
+        }
+        .tag_div {
+            height: 36px;
+            width: 30vw;
+            display: flex;
+            align-items: flex-start;
+            margin: auto auto 5px auto;
+            gap: 5px;
+        }
+        .tag_input{
+            margin:auto 0px;
+            width: 25vw;
+            height: 32px;
+            font-size:x-large;
+            border-radius: 100px;
+            background-color: #c0c0c0;
+            border: 5px #bebebe;
+        }
+    </style>
+    <div style="position: absolute;top:0px;left: 0px;height: 100vh;width: 100vw;background-color: #7a7a7a;"id="background">
+        <div style="margin: auto;height: 100px;background-color: #d3d3d3;">
+            <div style="height: 30px;">
+            </div>
+            <h1 style="text-align: center;margin: auto;" title="拿你他媽鼠標瞄三小">牛腱的記事本</h1>
+        </div>
+        <div style="float: left;height: auto;width: 25vw;">
+            <div style="margin: auto;width: 20vw;border-radius: 10px;background-color: #afafaf;">
+                <h1 style="text-align: center;">詞條檢索</h1>
+            </div>
+        </div>
+        <div style="float: right;height: 10px;width: 75vw;row-gap: 20px;margin-top: 20px;"id="container">
+            <div class="thing" style="height: 50px;border-radius: 100px">
+                <div style="display: flex;gap: 1px;margin-left: 1vw;float: left;width: 30vw;height:20px;margin:15px 15px;border-radius: 100px;background-color: #32ee90;white-space: nowrap;">
+                    <h1 style="margin-top: -15px;">不是目錄</h1>
+                    <div style="margin-top: 5px;float:left;height:15px;width:auto;background-color: #474747;border-radius: 100px;border:2px solid #7a7a7a;color: #ffffff;">
+                        <p style="margin: 1px 5px;font-size: 11px;">11234567891</p>
+                    </div>
+                </div>
+                <div style="float: right;margin-right: 20px;height: 30px;">
+                    <button style="float:right;height:30px;width:5vw;margin: 10px 5px;background-color: #2bcc5c;border:2px solid #3cff3c;color: #ffffff;overflow: hidden;">
+                        <p style="margin: 0px;font-size: 1.5vmin;">完成👍</p>
+                    </button>
+                    <button style="float:right;height:30px;width:5vw;margin: 10px 5px;background-color: #cc3333;border:2px solid #ff3c3c;color: #ffffff;overflow: hidden;">
+                        <p style="margin: 0px;font-size: 1.5vmin;">取消👎</p>
+                    </button>
+                    <button style="float:right;height:30px;width:5vw;margin: 10px 5px;background-color: #2f55d1;border:2px solid #3363ff;color: #ffffff;overflow: hidden;">
+                        <p style="margin: 0px;font-size: 1.5vmin;">編輯✏️</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button style="border-radius: 100px;border: 10px solid #b9b9b9;width: 100px;height: 100px;background-color: #ffffff;position:fixed;left:90vw;top:85dvh;" accesskey="a" id="open"></button>
+        <button style="border-radius: 100px;border: 10px solid #b9b9b9;width: 100px;height: 100px;background-color: #ffffff;position:fixed;left:90vw;top:55dvh;" accesskey="n" id="adda"></button>
+    </div>
+    <div style="position: absolute;top:0px;left: 0px;height: 100vh;width: 100vw;background-color: #000000a1;display: none; align-items: flex-start;" id="guiA" >
+        <div style="text-align: center;height: 90vh;width: 91vw;margin: 5vh 5vw;border-radius: 2vmin;background-color: #ffffff">
+            <h1 style="height: 15vh;margin: 0px;display: flex;justify-content: center;align-items: center">新增事務</h1>
+            <input style="float:initial;height: 5vh;width: 70vw;margin: 2vmin 10vw;font-size:x-large;border-radius: 100px;background-color: #c0c0c0;border: 5px #bebebe;" type="text" placeholder="  標題" id="add_title">
+            <div style="height: 50vh;width: 70vw;gap: 2vmin;row-gap: 2vmin;margin:0px 10vw 2vmin 10vw;display: flex;">
+                <textarea style="flex: 1;resize: none;float: left;height: 50vh;width: auto;font-size:x-large;border-radius: 2vmin;background-color: #c0c0c0;border: 5px #bebebe;" type="text" placeholder=" 內容..." id="add_text"></textarea>
+                <div style="display: flex;flex-direction: column;flex: 1;row-gap: 2vmin;float: right; height: 50vh;width: auto;">
+                    <div style="flex: 1;margin: auto;height: 25vh;width: 100%;border-radius: 2vmin;background-color: #eeeeee;border: 5px #dddddd;">
+                        <h2 style="margin-top: 0px;">日期</h2><br>
+                        <input style="width: 150px;border-radius: 100px;background-color: #c0c0c0;border: 5px #bebebe;" type="datetime-local" id="add_t_start">~
+                        <input style="width: 150px;border-radius: 100px;background-color: #c0c0c0;border: 5px #bebebe;" type="datetime-local" id=""add_t_end><br>
+                        需要<input style="width: 40px;border-radius: 100px;background-color: #c0c0c0;border: 5px #bebebe;" type="number" id="add_t_prepare">天完成
+                    </div>
+                    <div style="flex: 1;margin: auto;height: 25vh;width: 100%;border-radius: 2vmin;background-color: #eeeeee;border: 5px #dddddd;overflow-y: auto;gap: px;" id="tag_container">
+                        <h2 style="margin: 0px;">標籤</h2><br>
+                        <div style="height: 36px;width: 30vw;display: flex;align-items: flex-start;margin: auto auto 5px auto;gap: 5px;">
+                            <input style="margin:auto 0px;width: 25vw;height: 32px;font-size:x-large;border-radius: 100px;background-color: #c0c0c0;border: 5px #bebebe;" type="text" placeholder=" 標籤" id="add_tag0">
+                            <button style="height: 36px;width: 36px;cursor:pointer;border: 0px;" id="add_tag">
+                                <img src="https://globalsymbols.com/uploads/production/image/imagefile/16237/17_16238_c25962bd-e354-440f-b77b-5c820e96d8c0.png" style="height: 32px;width: 32px;margin: auto;display: block;">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin: 0px 10vw;height: 15vh;">
+                <button style="float:right;height:7.5vh;width:15vw;margin: 2.5vh 5px;background-color: #2bcc5c;border:2px solid #3cff3c;color: #ffffff;overflow: hidden;" id="add_finsh">
+                    <p style="margin: 0px 5px;font-size: 5vmin;">✓ 完成</p>
+                </button>
+                <button style="float:left;height:7.5vh;width:15vw;margin: 2.5vh 5px;background-color: #cc3333;border:2px solid #ff3c3c;color: #ffffff;overflow: hidden;" id="add_close">
+                    <p style="margin: 0px 5px;font-size: 5vmin;">⨉ 取消</p>
+                </button>
+            </div>
+        </div>
+    </div>
+<script>
+// 事項總列表
+const List = {}
+// 打開新增介面
+document.getElementById("open").addEventListener("click",function(){
+    const guiA = document.getElementById('guiA');
+        if (guiA.style.display == 'none'){
+            guiA.style.display = 'flex';
+        }
+        else{
+            guiA.style.display = 'none';
+        }
+})
+// 關閉新增介面
+document.getElementById("add_close").addEventListener("click",function(){
+    const guiA = document.getElementById('guiA');
+        guiA.style.display = 'none';
+})
+// 完成新增介面
+document.getElementById("add_finsh").addEventListener("click", function(){
+    const title_e = document.getElementById('add_title').value;
+    const text = document.getElementById('add_text').value;
+    const t_start = document.getElementById('add_t_start').value;
+    const t_end = document.getElementById('add_t_end').value;
+    const t_prepare = document.getElementById('add_t_prepare').value;
+    
+    const tag = document.getElementById('add_tag');
+
+})
+// 創立新list
+let t = 0;
+let BGH = 100;
+document.getElementById("adda").addEventListener("click", function () {
+        const NewThing = document.createElement("div");
+        NewThing.style.margin = 'auto';
+        NewThing.style.width = '70vw';
+        NewThing.style.borderRadius = '20px';
+        NewThing.style.backgroundColor = '#ffffff';
+        const text = document.createElement("h1");
+        text.textContent = `這是標題${t}`
+        t = t + 1;
+        text.style.textAlign = 'center'
+        NewThing.appendChild(text);
+        const container = document.getElementById("container");
+        container.appendChild(NewThing);
+        const BG = document.getElementById("background");
+        BG.style.height = `${BGH}vh`;
+});
+let tag_ts = 0;
+const add_tag = document.getElementById("add_tag");
+add_tag.addEventListener("click",function(){
+    tag_ts += 1;
+    const new_tag = document.createElement("div");
+    new_tag.className = "tag_div";
+    const new_tag_input = document.createElement("input")
+    new_tag_input.className = "tag_input";
+    new_tag_input.id = `add_tag{tag_ts}`;
+    new_tag_input.type = "text"
+    new_tag_input.placeholder = " 標籤"
+    new_tag.appendChild(new_tag_input);
+    new_tag.appendChild(add_tag);
+    const tag_container = document.getElementById("tag_container");
+    tag_container.appendChild(new_tag);
+})
+</script>
+</body>
+</html>
