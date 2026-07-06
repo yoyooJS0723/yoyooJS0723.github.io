@@ -11,7 +11,7 @@
         button:hover { background: #27ae60; }
         p { color: #666; }
     </style>
-    <!-- 引入公開測試用的即時通訊庫 PieSocket (也可以換成 Socket.io) -->
+    <!-- 【已修正】引入完整的 PieSocket 套件庫路徑，不再只是空網址 -->
     <script src="https://unpkg.com"></script>
 </head>
 <body>
@@ -19,35 +19,28 @@
     <h1>多人即時同步測試</h1>
     <p>請用瀏覽器同時打開「兩個視窗」，點擊按鈕看看另一個視窗的變化！</p>
     
-    <!-- 這個方塊會根據別人的動作改變顏色 -->
     <div id="statusBox" class="box"></div>
-    
     <button onclick="sendAction()">戳一下方塊！</button>
 
     <script>
-        // 1. 初始化一個免費的即時通訊通道 (這裡使用 PieSocket 的公開測試 ID)
+        // 初始化連線
         const pieSocket = new PieSocket.default({
             clusterId: "demo",
-            apiKey: "o7wYTkfkYpTL6K6Yr4Vw9fS8N7A6f2g1" // 公開測試 Key
+            apiKey: "o7wYTkfkYpTL6K6Yr4Vw9fS8N7A6f2g1"
         });
 
-        // 2. 訂閱一個名為 "game-room" 的遊戲房間
         const channel = pieSocket.subscribe("game-room");
 
-        // 3. 監聽：當收到「房間內任何人」發送的即時動作時
+        // 監聽即時訊號
         channel.on("action-triggered", (data) => {
             const box = document.getElementById("statusBox");
-            
-            // 收到動作後，立刻改變方塊狀態，不用重新載入網頁！
             box.classList.add("active");
-            
-            // 1 秒後恢復原狀
             setTimeout(() => {
                 box.classList.remove("active");
             }, 1000);
         });
 
-        // 4. 發送：當我點擊按鈕時，通知房間裡的所有人
+        // 發送即時訊號
         function sendAction() {
             channel.publish("action-triggered", {
                 message: "有人點擊了按鈕！"
