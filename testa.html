@@ -2,35 +2,42 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>最簡即時同步</title>
-    <!-- 引入 PieSocket 庫 -->
-    <script src="https://unpkg.com"></script>
+    <title>最簡原生即時同步</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background: #f0f2f5; }
+        p { font-size: 24px; font-weight: bold; color: #333; }
+        button { padding: 12px 24px; font-size: 16px; cursor: pointer; background-color: #2ecc71; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #27ae60; }
+    </style>
 </head>
 <body>
 
+    <!-- 這是會被改變的文字 -->
     <p id="targetText">等待變更...</p>
-    <button onclick="changeText()">改變文字</button>
+    
+    <!-- 點擊按鈕來通知其他視窗 -->
+    <button onclick="changeText()">點我同步改變文字</button>
 
     <script>
-        // 1. 初始化連線
-        const pieSocket = new PieSocket.default({
-            clusterId: "demo",
-            apiKey: "o7wYTkfkYpTL6K6Yr4Vw9fS8N7A6f2g1"
-        });
+        // 1. 建立一個瀏覽器內建的即時廣播頻道，取名為 "game_channel"
+        const channel = new BroadcastChannel('game_channel');
 
-        // 2. 訂閱房間
-        const channel = pieSocket.subscribe("text-room");
+        // 2. 監聽頻道：當別的視窗發送訊息過來時，立刻更新自己的畫面
+        channel.onmessage = function(event) {
+            if (event.data && event.data.text) {
+                document.getElementById("targetText").innerText = event.data.text;
+            }
+        };
 
-        // 3. 監聽：別人點擊時，自己畫面即時跟著變
-        channel.on("text-changed", (data) => {
-            document.getElementById("targetText").innerText = data.text;
-        });
-
-        // 4. 發送：自己點擊時，通知所有人改變
+        // 3. 發送訊息：當我點擊按鈕時，改變自己並通知所有分頁
         function changeText() {
-            channel.publish("text-changed", {
-                text: "文字已被即時改變！"
-            });
+            const newText = "連線成功！文字已被即時改變！";
+            
+            // 改變自己當前視窗的文字
+            document.getElementById("targetText").innerText = newText;
+            
+            // 廣播給其他打開這個網頁的視窗
+            channel.postMessage({ text: newText });
         }
     </script>
 </body>
