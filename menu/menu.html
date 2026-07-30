@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<head>
+    <title>某人的小天地</title>
+    <link rel="icon" href="https://yoyoojs0723.github.io/dineso.png">
+</head>
+<body style="overflow-y: auto;margin: 0px;background-color: #070e70;">
+    <style>
+        .menu_p{
+            width:100vw;
+            height: 550px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: inline-block;
+            background-image:
+                radial-gradient(circle at center, #ffffff00, #000000be),
+                url('https://yoyoojs0723.github.io/menu/menu.png');
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+        .menu_p::before {
+            display: inline-block;
+            width: 1000px;
+        }
+        .part {
+            position: relative;
+            display: block;
+            padding: 20px 50px;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            height: 250px;
+            gap: 25px;
+            margin: 200px;
+            z-index: 10;
+        }
+        .part::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color:#1c2499; 
+            z-index: -1;
+            transform: skewX(-10deg);
+            box-shadow: 
+                -10px 10px 0 10px #ff3df5,
+                10px -10px 0 10px #3fc2ff;
+        }
+        .part_p{
+            width: 200px;
+            height: 200px;
+            transform: skewX(-10deg);
+            z-index: 11;
+        }
+        .part_t{
+            width:1200px;
+            height: 200px;
+            z-index: 11;
+        }
+        .part_t::before{
+            transform: skewX(-10deg);
+        }
+        .part_title{
+            font-size: 40px;
+            margin: 0px auto;
+            height: 60px;
+            text-align: center;
+            z-index: 11;
+        }
+        .part_text{
+            font-size: 20px;
+            margin: 20px;
+            z-index: 11;
+        }
+        .part_b{
+            position: absolute;
+            right: 40px;
+            bottom: 20px;
+            width: 125px;
+            height: 50px;
+            background-image: linear-gradient(225deg, #3498db,#ff6af8);
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .part_b:hover{
+            background-image: linear-gradient(225deg,#ff6af8,#3498db);
+        }
+        .href_a{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color:#000000;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            text-decoration: none;
+            margin: 10px;
+            transition: background-color 0.2s ease;
+        }
+        .href_a:hover {
+            background-color: #ffffff;
+        }
+        .href_b {
+            width: 30px;
+            height: 30px;
+            fill: #ffffff;
+        }
+        .href_b:hover {
+            fill: #000000;
+        }
+    </style>
+    <div style="width:100vw;height: 80px;">
+        <div style="position: fixed;width:100vw;height: 100px;background-color: #000000;z-index: 723;"></div>
+        <img src="https://yoyoojs0723.github.io/dineso.png" style="position: fixed;width: 80px;height: 80px;left: 10px;top: 10px;z-index: 724;" id="pet">
+        <a href="https://yoyoojs0723.github.io/menu/meun.html" style="position: fixed;height: 0px;top:0px;margin: 50px 10px;left: 100px;color: white;font-size: 50px;font-family: 'Inter', sans-serif;text-decoration:none;display: flex;align-items: center;z-index: 724;">yoyoojs0723.github.io</a>
+    </div>
+    <div style="width: 100vw;margin-top: 15px;">
+        <i class="menu_p"><h1 style="color: #ffffff;font-size: 100px;">閒閒沒有事<br>那來寫程式</h1></i>
+    </div>
+    <div style="width:100vw;top:100px;left: 0px;display: flex;flex-direction: column;gap: 100px;margin: 100px 0px;">
+        <div class="part">
+            <img src="https://yoyoojs0723.github.io/cat/cat.png" class="part_p">
+            <div class="part_t">
+                <h6 class="part_title">月薪貓 - 我真的特別愛你
+                <p class="part_text">恩我知道放這玩意沒意義，<br>恩確實是我亂寫的，<br>放這只是後面懶得重寫一個框</p>
+                </h6>
+                <a href="https://yoyoojs0723.github.io/cat/cat.html" class="part_b">進入→</a>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #000000;width: 100vw;height: 300px;left:0px;color: #ffffff;text-align: center;"><br><br>其他網站這邊好像都寫自己公司地址還郵政區號啥的<br>但這些都我自己做的<br>所以隨便寫個聯繫方式好了<br>🫠🫠🫠<br><br>
+        <div style="justify-content: center;">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="href_a" title="文藝復興">
+                <svg xmlns="http://w3.org" viewBox="0 0 576 512" class="href_b">
+                    <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/reel/DY33h85NiwZ" target="_blank" class="href_a" title="你不會真以為是聯絡方式吧">
+                <svg xmlns="http://w3.org" viewBox="0 0 452 502" class="href_b">
+                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                </svg>
+            </a>
+            <a href="https://www.tiktok.com/@definitelycriss/video/7651056145628400914" target="_blank" class="href_a" title="盡情享受抽象吧">
+                <svg xmlns="http://w3.org" viewBox="8 8 25 25" class="href_b">
+                    <path d="M27.03,13.12c-1.24-.81-2.13-2.1-2.41-3.6-.06-.33-.09-.66-.09-1h-3.95v15.84c-.07,1.77-1.53,3.2-3.32,3.2-.56,0-1.08-.14-1.54-.38-1.06-.56-1.78-1.66-1.78-2.94,0-1.83,1.49-3.32,3.32-3.32.34,0,.67.06.98.15v-4.03c-.32-.04-.65-.07-.98-.07-4.01,0-7.27,3.26-7.27,7.27,0,2.46,1.23,4.64,3.1,5.95,1.18.83,2.62,1.32,4.17,1.32,4.01,0,7.27-3.26,7.27-7.27v-8.03c1.55,1.11,3.45,1.77,5.5,1.77v-3.95c-1.1,0-2.13-.33-2.99-.89Z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+<script>
+    const move = {
+        x : 0,
+        y : 0,
+        down_t : 0,
+        bottom : 90,
+        life : 0,
+    };
+    let movefb = null;
+    const movef = function(){
+        const pet = document.getElementById("pet");
+        if (move.y < move.bottom){
+            move.down_t += 1;
+            move.y += 4.9*(move.down_t**2-1)/1000;
+        }
+        if (move.y > move.bottom){
+            move.y = move.bottom;
+            move.down_t = 0;
+        }
+        window.addEventListener("keydown", function(e) {
+            move.life = 0;
+            if (e.key === "a") {
+                move.x += -5/1000;
+            }
+            if (e.key === "d") {
+                move.x += 5/1000;
+            }
+        });
+        pet.style.top = `${move.y}vh`;
+        pet.style.left = `${move.x}vw`;
+        move.life += 1;
+        if (move.life === 1000){
+            clearInterval(movefb);
+            movefb = null;
+            pet.style.top = "10px";
+            pet.style.left = "10px";
+        }
+    }
+    const movefa = function(){
+        if (movefb === null) {
+        movefb = setInterval(movef, 50);
+        }
+    };
+    document.getElementById("pet").addEventListener("click",movefa)
+</script>
+</body>
+</html
