@@ -1,1 +1,49 @@
-
+<!DOCTYPE html>
+<body>
+  <img src="https://yoyoojs0723.github.io/dineso.png" style="position: fixed;width: 80px;height: 80px;left: 10px;top: 10px;z-index: 724;" id="pet">
+</body>
+<script>
+    const move = {
+        x : 10,
+        y : 10,
+        down_t : 0,
+        bottom : 85,
+        life : 0,
+    };
+    let movefb = null;
+    const movef = function(){
+        const pet = document.getElementById("pet");
+        if (move.y < move.bottom){
+            move.down_t += 1;
+            move.y += 4.9*(move.down_t**2-1)/1000;
+        }
+        if (move.y > move.bottom){
+            move.y = move.bottom;
+            move.down_t = 0;
+        }
+        window.addEventListener("keydown", function(e) {
+            move.life = 0;
+            if (e.key === "a") {
+                move.x += -5/1000;
+            }
+            if (e.key === "d") {
+                move.x += 5/1000;
+            }
+        });
+        pet.style.top = `${move.y}vh`;
+        pet.style.left = `${move.x}vw`;
+        move.life += 1;
+        if (move.life === 1000){
+            clearInterval(movefb);
+            movefb = null;
+            pet.style.top = "10px";
+            pet.style.left = "10px";
+        }
+    }
+    const movefa = function(){
+        if (movefb === null) {
+        movefb = setInterval(movef, 50);
+        }
+    };
+    document.getElementById("pet").addEventListener("click",movefa)
+</script>
