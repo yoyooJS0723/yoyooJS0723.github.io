@@ -34,10 +34,12 @@
         pet.style.left = `${move.x}px`;
         move.life += 1;
         if (move.life === 1000){
-            clearInterval(movefb);
-            movefb = null;
-            pet.style.top = "10px";
-            pet.style.left = "10px";
+          clearInterval(movefb);
+          movefb = null;
+          pet.style.top = "10px";
+          pet.style.left = "10px";
+          move.life = 0;
+          move.down_t = 0;
         }
     }
     const movefa = function(){
