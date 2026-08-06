@@ -17,10 +17,10 @@
     const movef = function(){
         const pet = document.getElementById("pet");
         document.getElementById("left").addEventListener("click",function(){
-          move.x += -10;
+          move.x += -10/1000;
         })
         document.getElementById("right").addEventListener("click",function(){
-          move.x += 10;
+          move.x += 10/1000;
         })
         if (move.y < (window.innerHeight/10*9 || move.down_t < 0)){
             move.down_t += 1;
