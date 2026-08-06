@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <body>
-  <img src="https://yoyoojs0723.github.io/dineso.png" style="position: fixed;width: 80px;height: 80px;left: 10px;top: 10px;z-index: 724;" id="pet">
-  <button style="position:fixed;bottom:50px;left:50px;width:200px;height:200px;background-color:#000000"></button>
+  <img src="https://yoyoojs0723.github.io/dineso.png" style="position: fixed;width: 100px;height: 100px;left: 10px;top: 10px;z-index: 724;" id="pet">
+  <button style="position:fixed;bottom:50px;left:50px;width:200px;height:200px;background-color:#000000" id="left"></button>
+  <button style="position:fixed;bottom:50px;left:500px;width:200px;height:200px;background-color:#000000" id="right"></button>
+  <button style="position:fixed;bottom:50px;right:50px;width:200px;height:200px;background-color:#000000" id="jump"></button>
 </body>
 <script>
     const move = {
@@ -14,7 +16,13 @@
     let movefb = null;
     const movef = function(){
         const pet = document.getElementById("pet");
-        if (move.y < (window.innerHeight/10*9)){
+        document.getElementById("left").addEventListener("click",function{
+          move.x += -10;
+        })
+        document.getElementById("right").addEventListener("click",function{
+          
+        })
+        if (move.y < (window.innerHeight/10*9 || move.down_t < 0)){
             move.down_t += 1;
             move.y += 4.9*(move.down_t**2-1)/1000;
         }
