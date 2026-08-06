@@ -7,18 +7,18 @@
         x : 10,
         y : 10,
         down_t : 0,
-        bottom : 85,
-        life : 0,
+        bottom : (window.innerHeight/10*9),
+        life : 0
     };
     let movefb = null;
     const movef = function(){
         const pet = document.getElementById("pet");
-        if (move.y < move.bottom){
+        if (move.y < (window.innerHeight/10*9)){
             move.down_t += 1;
             move.y += 4.9*(move.down_t**2-1)/1000;
         }
-        if (move.y > move.bottom){
-            move.y = move.bottom;
+        if (move.y > (window.innerHeight/10*9)){
+            move.y = (window.innerHeight/10*9);
             move.down_t = 0;
         }
         window.addEventListener("keydown", function(e) {
