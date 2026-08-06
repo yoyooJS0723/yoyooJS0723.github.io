@@ -30,8 +30,8 @@
                 move.x += 5/1000;
             }
         });
-        pet.style.top = `${move.y}vh`;
-        pet.style.left = `${move.x}vw`;
+        pet.style.top = `${move.y}px`;
+        pet.style.left = `${move.x}px`;
         move.life += 1;
         if (move.life === 1000){
             clearInterval(movefb);
