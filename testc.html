@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>純本地 3D 立方體隨滑鼠旋轉</title>
+    <style>
+        /* 全螢幕基礎設定 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0d1117; /* 高質感深色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 1. 3D 透視舞台（核心） */
+        .stage {
+            perspective: 800px;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 2. 立方體容器 */
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            /* 預設一點角度，讓一開始看起來就是立體的 */
+            transform: rotateX(-20deg) rotateY(20deg);
+            will-change: transform;
+        }
+
+        /* 3. 六個面的通用樣式 */
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            /* 帶有透明度的彩色半透明材質，交疊時非常漂亮 */
+            backdrop-filter: blur(2px);
+        }
+
+        /* 4. 透過 3D 轉換，將六個平面拼成一個正立方體 */
+        .front  { background: rgba(52, 152, 219, 0.7);  transform: translateZ(100px); }
+        .back   { background: rgba(231, 76, 60, 0.7);   transform: rotateY(180deg) translateZ(100px); }
+        .left   { background: rgba(46, 204, 113, 0.7);  transform: rotateY(-90deg) translateZ(100px); }
+        .right  { background: rgba(155, 89, 182, 0.7);  transform: rotateY(90deg) translateZ(100px); }
+        .top    { background: rgba(241, 196, 15, 0.7);  transform: rotateX(90deg) translateZ(100px); }
+        .bottom { background: rgba(230, 126, 34, 0.7);  transform: rotateX(-90deg) translateZ(100px); }
+    </style>
+</head>
+<body>
+
+    <div class="stage">
+        <!-- 3D 立方體結構 -->
+        <div class="cube" id="myCube">
+            <div class="face front">前</div>
+            <div class="face back">後</div>
+            <div class="face left">左</div>
+            <div class="face right">右</div>
+            <div class="face top">上</div>
+            <div class="face bottom">下</div>
+        </div>
+    </div>
+
+    <script>
+        const cube = document.getElementById('myCube');
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = -20; // 初始角度
+        let currentY = 20;  // 初始角度
+
+        // 監聽滑鼠移動
+        window.addEventListener('mousemove', (event) => {
+            // 將滑鼠坐標轉換成 -1 到 1 的比例
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // 動態平滑渲染迴圈
+        function updateAnimation() {
+            // 計算目標旋轉角度（最大旋轉 60 度，可自由調整數字）
+            const targetY = mouseX * 60;
+            const targetX = mouseY * 60;
+
+            // 平滑插值 (Lerp) 讓移動像是有重量一樣絲滑
+            currentY += (targetY - currentY) * 0.08;
+            currentX += (targetX - currentX) * 0.08;
+
+            // 直接控制 CSS 進行 3D 旋轉
+            cube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+
+            requestAnimationFrame(updateAnimation);
+        }
+
+        // 啟動動畫
+        updateAnimation();
+    </script>
+</body>
+</html>
